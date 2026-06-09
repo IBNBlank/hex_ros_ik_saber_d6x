@@ -10,7 +10,7 @@ To use the demo, run a launch file in the `launch` directory, and publish to the
 
 ## Maintainer
 
-[Dong Zhaorui](mailto:847235539@qq.com)
+[Dong Zhaorui](https://github.com/IBNBlank)
 
 ## Prerequisites
 
