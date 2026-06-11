@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot name="hex_ros_ik_saber_750d">
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.004019 2.7e-05 0.055832" rpy="0 0 0" />
+            <mass value="1.075" />
+            <inertia ixx="0.000942" ixy="-1e-06" ixz="-5.4e-05"
+                     iyy="0.001063" iyz="0.0" izz="0.001057" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.6 0.6 0.6 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+  
+    <link name="link_1">
+        <inertial>
+            <origin xyz="0.040438 -6.9e-05 0.010724" rpy="0 0 0" />
+            <mass value="1.04678" />
+            <inertia ixx="0.000887" ixy="-3e-06" ixz="-2.8e-05"
+                     iyy="0.000925" iyz="-1e-06" izz="0.000957" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_1.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.6 0.6 0.6 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_1.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_1" type="revolute">
+        <origin xyz="0.0075 0 0.0895" rpy="1.5707963268 -1.5707963268 3.14159265359" />
+        <parent link="base_link" />
+        <child link="link_1" />
+        <axis xyz="1 0 0" />
+        <limit effort="40.0" lower="-2.9670597283903604" upper="2.9670597283903604" velocity="1.0"/>
+        <dynamics damping="20" friction="2"/>
+    </joint>
+
+    <link name="link_2">
+        <inertial>
+            <origin xyz="0.000984 0.222985 -0.004782" rpy="0 0 0" />
+            <mass value="1.366628" />
+            <inertia ixx="0.020238" ixy="1.6e-05" ixz="-5e-06"
+                     iyy="0.001281" iyz="0.000251" izz="0.019949" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_2.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.6 0.6 0.6 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_2.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_2" type="revolute">
+        <origin xyz="0.043 0 0" rpy="0 0 -1.5707963268" />
+        <parent link="link_1" />
+        <child link="link_2" />
+        <axis xyz="0 0 1" />
+        <limit effort="40.0" lower="-1.5707963268" upper="1.5707963268" velocity="1.0"/>
+        <dynamics damping="20" friction="2"/>
+    </joint>
+
+    <link name="link_3">
+        <inertial>
+            <origin xyz="0.049502 0.062515 -0.001177" rpy="0 0 0" />
+            <mass value="0.802284" />
+            <inertia ixx="0.001075" ixy="-0.000337" ixz="-4e-05"
+                     iyy="0.001131" iyz="-5e-05" izz="0.001304" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_3.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.6 0.6 0.6 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_3.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_3" type="revolute">
+        <origin xyz="0 0.3268 0" rpy="3.14159265359 0 1.5707963268" />
+        <parent link="link_2" />
+        <child link="link_3" />
+        <axis xyz="0 0 -1" />
+        <limit effort="40.0" lower="-1.0471975512" upper="3.14159265359" velocity="1.0"/>
+        <dynamics damping="20" friction="2"/>
+    </joint>
+
+    <link name="link_4">
+        <inertial>
+            <origin xyz="0.16487 -0.006083 -0.001694" rpy="0 0 0" />
+            <mass value="0.907814" />
+            <inertia ixx="0.000563" ixy="0.000225" ixz="-9.1e-05"
+                     iyy="0.004529" iyz="1e-05" izz="0.004594" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_4.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.6 0.6 0.6 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_4.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_4" type="revolute">
+        <origin xyz="0.08847 0.072 -7.0034E-05" rpy="1.5707963268 0 0" />
+        <parent link="link_3" />
+        <child link="link_4" />
+        <axis xyz="1 0 0" />
+        <limit effort="40.0" lower="-2.79252680319" upper="2.79252680319" velocity="1.0"/>
+        <dynamics damping="20" friction="2"/>
+    </joint>
+
+    <link name="link_5">
+        <inertial>
+            <origin xyz="0.078713 0.000365 0.003515" rpy="0 0 0" />
+            <mass value="0.66461" />
+            <inertia ixx="0.000417" ixy="1e-06" ixz="0.00012"
+                     iyy="0.000725" iyz="-3e-06" izz="0.000665" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_5.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.6 0.6 0.6 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_5.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_5" type="revolute">
+        <origin xyz="0.206 0 0" rpy="1.5707963268 0 0" />
+        <parent link="link_4" />
+        <child link="link_5" />
+        <axis xyz="0 0 1" />
+        <limit effort="40.0" lower="-1.5707963268" upper="1.5707963268" velocity="1.0"/>
+        <dynamics damping="20" friction="2"/>
+    </joint>
+
+    <link name="link_6">
+        <inertial>
+            <origin xyz="0.000752 8.5e-05 0.024275" rpy="0 0 0" />
+            <mass value="0.0" />
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0"
+                     iyy="0.0" iyz="0.0" izz="0.0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_6.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.6 0.6 0.6 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_6.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint_6" type="revolute">
+        <origin xyz="0.11 0 0" rpy="1.5707963268 0.0 1.5707963268" />
+        <parent link="link_5" />
+        <child link="link_6" />
+        <axis xyz="0 0 1" />
+        <limit effort="40.0" lower="-2.9670597283903604" upper="2.9670597283903604" velocity="1.0"/>
+        <dynamics damping="20" friction="2"/>
+    </joint>
+</robot>

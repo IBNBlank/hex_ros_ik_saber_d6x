@@ -1,4 +1,4 @@
-# hex_ros_ik_saber_d6x
+# hex_ros_ik_saber_750d
 
 ## What does this package do
 
@@ -67,7 +67,7 @@ Follow these steps to set up the project for development and testing on your loc
 2. Clone the repository:
 
    ```shell
-   git clone https://github.com/hexfellow/hex_ros_ik_saber_d6x.git
+   git clone https://github.com/hexfellow/hex_ros_ik_saber_750d.git
    ```
 
 3. Navigate back to the `catkin_ws` directory and build the workspace:
@@ -98,16 +98,16 @@ Follow these steps to set up the project for development and testing on your loc
 
 ### Usage
 
-1. Launch the `ik_saber_d6x` node:
+1. Launch the `ik_saber_750d` node:
 
    For ROS 1:
    ```shell
-   roslaunch hex_ros_ik_saber_d6x ik_saber_d6x.launch
+   roslaunch hex_ros_ik_saber_750d ik_saber_750d.launch
    ```
 
    For ROS 2:
    ```shell
-   ros2 launch hex_ros_ik_saber_d6x ik_saber_d6x.launch.py
+   ros2 launch hex_ros_ik_saber_750d ik_saber_750d.launch.py
    ```
 
 2. Publish to `/in_str` and `/in_int` topics.

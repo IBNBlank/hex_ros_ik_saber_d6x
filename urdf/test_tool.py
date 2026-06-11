@@ -21,7 +21,7 @@ POSE_LIST = [
 
 def main():
     dyn_util = HexDynUtil(
-        'saber_d6x.urdf',
+        'saber_750d.urdf',
         'link_6',
     )
     print(f"joint num: {dyn_util.get_joint_num()}")

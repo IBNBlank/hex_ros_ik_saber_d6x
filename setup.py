@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 from glob import glob
 
-package_name = 'hex_ros_ik_saber_d6x'
+package_name = 'hex_ros_ik_saber_750d'
 
 
 def get_files(tar: str, src: str):
@@ -39,7 +39,7 @@ setup(
     license='Apache-2.0',
     entry_points={
         'console_scripts': [
-            'ik_saber_d6x = hex_ros_ik_saber_d6x.ik_saber_d6x:main',
+            'ik_saber_750d = hex_ros_ik_saber_750d.ik_saber_750d:main',
         ],
     },
 )

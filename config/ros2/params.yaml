@@ -1,42 +1,41 @@
-ik_saber_d6x:
-  work_trace:
-    ros__parameters:
-      # rate
-      rate_ros: 1000.0
-      rate_state: 500.0
+ik_saber_750d:
+  ros__parameters:
+    # rate
+    rate_ros: 1000.0
+    rate_state: 500.0
 
-      # model
-      model_base: "base_link"
-      model_joint_names:
-        - "joint_1"
-        - "joint_2"
-        - "joint_3"
-        - "joint_4"
-        - "joint_5"
-        - "joint_6"
-      model_end_effector: link_6
+    # model
+    model_base: "base_link"
+    model_joint_names:
+      - "joint_1"
+      - "joint_2"
+      - "joint_3"
+      - "joint_4"
+      - "joint_5"
+      - "joint_6"
+    model_end_effector: link_6
 
-      # limit
-      limit_pos:
-        - "[-2.9, 2.9]"
-        - "[-2.0, 1.5]"
-        - "[-0.3, 3.1]"
-        - "[-2.9, 2.9]"
-        - "[-1.6, 1.6]"
-        - "[-1.6, 1.6]"
-      limit_vel:
-        - "[-10.0, 10.0]"
-        - "[-10.0, 10.0]"
-        - "[-10.0, 10.0]"
-        - "[-10.0, 10.0]"
-        - "[-10.0, 10.0]"
-        - "[-10.0, 10.0]"
-      limit_acc:
-        - "[-100.0, 100.0]"
-        - "[-100.0, 100.0]"
-        - "[-100.0, 100.0]"
-        - "[-100.0, 100.0]"
-        - "[-100.0, 100.0]"
-        - "[-100.0, 100.0]"
-      limit_joint_err: 0.2
-      limit_se3_err: 0.05
+    # limit
+    limit_pos:
+      - "[-2.9, 2.9]"
+      - "[-2.0, 1.5]"
+      - "[-0.3, 3.1]"
+      - "[-2.9, 2.9]"
+      - "[-1.6, 1.6]"
+      - "[-1.6, 1.6]"
+    limit_vel:
+      - "[-10.0, 10.0]"
+      - "[-10.0, 10.0]"
+      - "[-10.0, 10.0]"
+      - "[-10.0, 10.0]"
+      - "[-10.0, 10.0]"
+      - "[-10.0, 10.0]"
+    limit_acc:
+      - "[-100.0, 100.0]"
+      - "[-100.0, 100.0]"
+      - "[-100.0, 100.0]"
+      - "[-100.0, 100.0]"
+      - "[-100.0, 100.0]"
+      - "[-100.0, 100.0]"
+    limit_joint_err: 0.2
+    limit_se3_err: 0.05
