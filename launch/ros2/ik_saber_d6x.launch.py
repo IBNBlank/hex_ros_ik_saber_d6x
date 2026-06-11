@@ -21,7 +21,7 @@ def generate_launch_description():
         'sim_time_flag',
         default_value='false',
     )
-    
+
     # visual
     urdf_file_path = FindPackageShare('hex_toolkit_saber_d6x').find(
         'hex_toolkit_saber_d6x') + '/urdf/saber_d6x.urdf'
@@ -52,41 +52,39 @@ def generate_launch_description():
         ),
     ])
 
-    # work trace
+    # ik
     urdf_file_path = FindPackageShare('hex_ros_ik_saber_d6x').find(
         'hex_ros_ik_saber_d6x') + '/urdf/saber_d6x.urdf'
-    work_track_path = FindPackageShare('hex_ros_ik_saber_d6x').find(
-        'hex_ros_ik_saber_d6x') + '/config/ros2/work_trace.yaml'
-    work_trace_group = GroupAction([
-        Node(
-            package='hex_ros_ik_saber_d6x',
-            executable='work_trace',
-            name='work_trace',
-            output='screen',
-            emulate_tty=True,
-            parameters=[
-                {
-                    'use_sim_time': LaunchConfiguration('sim_time_flag'),
-                    'prog_debug': True,
-                    'model_path': urdf_file_path,
-                },
-                work_track_path,
-            ],
-            remappings=[
-                # subscribe
-                ('/target_pose', '/target_pose'),
-                # publish
-                ('/joint_state', '/joint_state'),
-                ('/debug_pose', '/debug_pose'),
-                ('/ik_success', '/ik_success'),
-            ]),
-    ])
+    params_path = FindPackageShare('hex_ros_ik_saber_d6x').find(
+        'hex_ros_ik_saber_d6x') + '/config/ros2/params.yaml'
+    ik_node = Node(
+        package='hex_ros_ik_saber_d6x',
+        executable='ik_saber_d6x',
+        name='ik_saber_d6x',
+        output='screen',
+        emulate_tty=True,
+        parameters=[
+            {
+                'use_sim_time': LaunchConfiguration('sim_time_flag'),
+                'prog_debug': True,
+                'model_path': urdf_file_path,
+            },
+            params_path,
+        ],
+        remappings=[
+            # subscribe
+            ('/target_pose', '/target_pose'),
+            # publish
+            ('/joint_state', '/joint_state'),
+            ('/debug_pose', '/debug_pose'),
+            ('/ik_success', '/ik_success'),
+        ])
 
     return LaunchDescription([
         # arg
         sim_time_flag,
         # visual
         visual_group,
-        # work trace
-        work_trace_group,
+        # ik
+        ik_node,
     ])

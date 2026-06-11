@@ -102,6 +102,8 @@ class IkSaberD6x:
                                     w=tar_ee_quat[3],
                                 ),
                             ))
+                else:
+                    self.__data_interface.pub_ik_success(False)
 
             # sleep
             self.__data_interface.sleep()
