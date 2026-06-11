@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(hex_ros_py_template)
+project(hex_ros_ik_saber_d6x)
 
 find_package(catkin REQUIRED)
 

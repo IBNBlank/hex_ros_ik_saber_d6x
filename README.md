@@ -1,4 +1,4 @@
-# hex_ros_py_template
+# hex_ros_ik_saber_d6x
 
 ## What does this package do
 
@@ -67,7 +67,7 @@ Follow these steps to set up the project for development and testing on your loc
 2. Clone the repository:
 
    ```shell
-   git clone https://github.com/hexfellow/hex_ros_py_template.git
+   git clone https://github.com/hexfellow/hex_ros_ik_saber_d6x.git
    ```
 
 3. Navigate back to the `catkin_ws` directory and build the workspace:
@@ -98,16 +98,16 @@ Follow these steps to set up the project for development and testing on your loc
 
 ### Usage
 
-1. Launch the `py_template` node:
+1. Launch the `ik_saber_d6x` node:
 
    For ROS 1:
    ```shell
-   roslaunch hex_ros_py_template py_template.launch
+   roslaunch hex_ros_ik_saber_d6x ik_saber_d6x.launch
    ```
 
    For ROS 2:
    ```shell
-   ros2 launch hex_ros_py_template py_template.launch.py
+   ros2 launch hex_ros_ik_saber_d6x ik_saber_d6x.launch.py
    ```
 
 2. Publish to `/in_str` and `/in_int` topics.

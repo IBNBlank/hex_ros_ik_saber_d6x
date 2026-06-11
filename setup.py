@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 from glob import glob
 
-package_name = 'hex_ros_py_template'
+package_name = 'hex_ros_ik_saber_d6x'
 
 
 def get_files(tar: str, src: str):
@@ -38,7 +38,7 @@ setup(
     license='Apache-2.0',
     entry_points={
         'console_scripts': [
-            'py_template = hex_ros_py_template.py_template:main',
+            'ik_saber_d6x = hex_ros_ik_saber_d6x.ik_saber_d6x:main',
         ],
     },
 )

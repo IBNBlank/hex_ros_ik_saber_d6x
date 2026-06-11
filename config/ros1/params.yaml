@@ -1,8 +1,44 @@
 # rate
-rate_ros: 300.0
+rate_ros: 1000.0
+rate_state: 500.0
 
-# str
-str_prefix: "HexHello! You said:"
+# model
+model_base: "base_link"
+model_joint_names:
+  - "joint_1"
+  - "joint_2"
+  - "joint_3"
+  - "joint_4"
+  - "joint_5"
+  - "joint_6"
+model_end_effector: link_6
+model_end_quat:
+  - 0.70710678
+  - 0.0
+  - -0.70710678
+  - 0.0
 
-# int
-int_range: [0, 1000]
+# limit
+limit_pos:
+  - "[-2.9, 2.9]"
+  - "[-2.0, 1.5]"
+  - "[-0.3, 3.1]"
+  - "[-2.9, 2.9]"
+  - "[-1.6, 1.6]"
+  - "[-1.6, 1.6]"
+limit_vel:
+  - "[-2.0, 2.0]"
+  - "[-2.0, 2.0]"
+  - "[-2.0, 2.0]"
+  - "[-2.0, 2.0]"
+  - "[-2.0, 2.0]"
+  - "[-2.0, 2.0]"
+limit_acc:
+  - "[-10.0, 10.0]"
+  - "[-10.0, 10.0]"
+  - "[-10.0, 10.0]"
+  - "[-10.0, 10.0]"
+  - "[-10.0, 10.0]"
+  - "[-10.0, 10.0]"
+limit_joint_err: 0.2
+limit_se3_err: 2.0
