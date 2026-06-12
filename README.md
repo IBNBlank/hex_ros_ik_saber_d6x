@@ -2,11 +2,7 @@
 
 ## What does this package do
 
-This package demonstrates a structure of writing a python ROS package that can be used in **both ROS 1 and ROS 2**. 
-
-It will wait for input, for string input, it will add a prefix to the input string and publish it to the `/out_str` topic. For int32 input, it will check if the input is within the specified range and publish it to the `/out_int` topic.
-
-To use the demo, run a launch file in the `launch` directory, and publish to the `/in_str` and `/in_int` topics.
+This package implements a kinematics solver for the **Saber 750D** 6-DOF robotic arm, supporting both **ROS 1** and **ROS 2**. It subscribes to a target end-effector pose and publishes the solved joint states in real time using an SE(3) interpolation strategy.
 
 ## Maintainer
 
@@ -28,30 +24,39 @@ Ensure the following software and hardware are installed:
 * [ ] **Horizon RDK X5**
 * [ ] **Rockchip RK3588**
 
-
-
 ## Public APIs
 
 ### Published Topics
 
-| Topic      | Msg Type                | Description           |
-| ---------- | ----------------------- | --------------------- |
-| `/out_str` | `std_msgs/(msg/)String` | Example of a string publication. |
-| `/out_int` | `std_msgs/(msg/)Int32`  | Example of an int32 publication.  |
+| Topic           | Msg Type                         | Description                                          |
+| --------------- | -------------------------------- | ---------------------------------------------------- |
+| `/joint_states` | `sensor_msgs/(msg/)JointState`   | Solved joint positions, velocities, and efforts.     |
+| `/debug_pose`   | `geometry_msgs/(msg/)PoseStamped`| Debug end-effector pose from FK after IK solve.      |
+| `/ik_success`   | `std_msgs/(msg/)Bool`            | Whether the last IK solve was successful.            |
 
 ### Subscribed Topics
 
-| Topic     | Msg Type                | Description           |
-| --------- | ----------------------- | --------------------- |
-| `/in_str` | `std_msgs/(msg/)String` | Example of a string subscription. |
-| `/in_int` | `std_msgs/(msg/)Int32`  | Example of an int32 subscription.  |
+| Topic          | Msg Type                         | Description                      |
+| -------------- | -------------------------------- | -------------------------------- |
+| `/target_pose` | `geometry_msgs/(msg/)PoseStamped`| Target end-effector pose for IK. |
 
 ### Parameters
 
-| Name        | Data Type     | Description                  |
-| ----------- | ------------- | ---------------------------- |
-| `str_name`  | `string`      | Prefix for the output string. |
-| `int_range` | `vector<int>` | Range for the output int.     |
+| Name                 | Data Type        | Description                              |
+| -------------------- | ---------------- | ---------------------------------------- |
+| `rate_ros`           | `float`          | Main loop rate (Hz).                     |
+| `rate_state`         | `float`          | Joint state publish rate (Hz).           |
+| `prog_debug`         | `bool`           | Enable debug pose publishing.            |
+| `model_path`         | `string`         | Path to the URDF model file.             |
+| `model_base`         | `string`         | Base link name.                          |
+| `model_joint_names`  | `vector<string>` | Ordered joint names.                     |
+| `model_end_effector` | `string`         | End-effector link name.                  |
+| `model_end_quat`     | `vector<float>`  | End-effector orientation offset (wxyz).  |
+| `limit_pos`          | `vector<string>` | Joint position limits [[min, max], …].   |
+| `limit_vel`          | `vector<string>` | Joint velocity limits [[min, max], …].   |
+| `limit_acc`          | `vector<string>` | Joint acceleration limits.              |
+| `limit_joint_err`    | `float`          | Joint-space error tolerance.             |
+| `limit_se3_err`      | `float`          | SE(3) error tolerance.                   |
 
 ## Getting Started
 
@@ -73,25 +78,29 @@ Follow these steps to set up the project for development and testing on your loc
 3. Navigate back to the `catkin_ws` directory and build the workspace:
 
    For ROS 1:
+
    ```shell
    cd ../
    catkin_make
    ```
 
    For ROS 2:
+
    ```shell
    cd ../
    colcon build
    ```
 
-4. Source the `setup.bash` file and run the tests:
+4. Source the `setup.bash` file:
 
    For ROS 1:
+
    ```shell
    source devel/setup.bash --extend
    ```
 
    For ROS 2:
+
    ```shell
    source install/setup.bash --extend
    ```
@@ -101,14 +110,25 @@ Follow these steps to set up the project for development and testing on your loc
 1. Launch the `ik_saber_750d` node:
 
    For ROS 1:
+
    ```shell
    roslaunch hex_ros_ik_saber_750d ik_saber_750d.launch
    ```
 
    For ROS 2:
+
    ```shell
    ros2 launch hex_ros_ik_saber_750d ik_saber_750d.launch.py
    ```
 
-2. Publish to `/in_str` and `/in_int` topics.
-3. View the output on the `/out_str` and `/out_int` topics.
+2. Publish a target pose to `/target_pose` (`geometry_msgs/PoseStamped`).
+3. View the solved joint states on `/joint_states` (`sensor_msgs/JointState`) and the IK success status on `/ik_success` (`std_msgs/Bool`).
+
+### Test Tools
+
+A test script is provided under `urdf/test_tool.py` for verifying kinematics offline without ROS:
+
+```shell
+cd urdf
+python3 test_tool.py
+```

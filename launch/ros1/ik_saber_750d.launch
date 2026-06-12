@@ -5,15 +5,40 @@
 <!-- Date  : 2024-09-17                    -->
 <!--#######################################-->
 
-<launch> 
-    <node name="ik_saber_750d" pkg="hex_ros_ik_saber_750d" type="ik_saber_750d.py" output="screen" >
-        # parameter
-        <rosparam file="$(find hex_ros_ik_saber_750d)/config/ros1/params.yaml"/>
-        # subscribe
-        <remap from="/in_str" to="/in_str" />
-        <remap from="/in_int" to="/in_int" />
-        # publish
-        <remap from="/out_str" to="/out_str" />
-        <remap from="/out_int" to="/out_int" />
-    </node>    
+<launch>
+    <!-- arg -->
+    <arg name="sim_time_flag" default="false" />
+    <arg name="visual_flag" default="true" />
+
+    <!-- visual -->
+    <group if="$(arg visual_flag)">
+        <param name="use_sim_time" value="$(arg sim_time_flag)" />
+        <param name="robot_description"
+               textfile="$(find hex_ros_ik_saber_750d)/urdf/saber_750d.urdf" />
+        <node name="robot_state_publisher" pkg="robot_state_publisher"
+              type="robot_state_publisher" output="screen">
+            <param name="use_sim_time" value="$(arg sim_time_flag)" />
+        </node>
+        <node name="rviz" pkg="rviz" type="rviz" output="screen"
+              args="-d $(find hex_ros_ik_saber_750d)/config/ros1/display.rviz">
+            <param name="use_sim_time" value="$(arg sim_time_flag)" />
+        </node>
+    </group>
+
+    <!-- ik -->
+    <node name="ik_saber_750d" pkg="hex_ros_ik_saber_750d"
+          type="ik_saber_750d.py" output="screen">
+        <!-- parameters -->
+        <rosparam file="$(find hex_ros_ik_saber_750d)/config/ros1/params.yaml" />
+        <param name="use_sim_time" value="$(arg sim_time_flag)" />
+        <param name="prog_debug" value="true" />
+        <param name="model_path"
+               value="$(find hex_ros_ik_saber_750d)/urdf/saber_750d.urdf" />
+        <!-- subscribe -->
+        <remap from="/target_pose" to="/target_pose" />
+        <!-- publish -->
+        <remap from="/joint_states" to="/joint_states" />
+        <remap from="/debug_pose" to="/debug_pose" />
+        <remap from="/ik_success" to="/ik_success" />
+    </node>
 </launch>
