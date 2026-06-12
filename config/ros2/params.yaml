@@ -38,4 +38,4 @@ ik_saber_750d:
       - "[-100.0, 100.0]"
       - "[-100.0, 100.0]"
     limit_joint_err: 0.2
-    limit_se3_err: 0.05
+    limit_se3_err: 0.01

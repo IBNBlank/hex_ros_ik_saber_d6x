@@ -121,7 +121,7 @@ Follow these steps to set up the project for development and testing on your loc
    ros2 launch hex_ros_ik_saber_750d ik_saber_750d.launch.py
    ```
 
-2. Publish a target pose to `/target_pose` (`geometry_msgs/PoseStamped`).
+2. Publish a target pose to `/target_pose` (`geometry_msgs/PoseStamped`). We recommend using the Message Publisher plugin in rqt (`Plugins > Topics > Message Publisher`).
 3. View the solved joint states on `/joint_states` (`sensor_msgs/JointState`) and the IK success status on `/ik_success` (`std_msgs/Bool`).
 
 ### Test Tools
