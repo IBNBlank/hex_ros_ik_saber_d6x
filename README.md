@@ -18,11 +18,8 @@ Ensure the following software and hardware are installed:
 ### Verified Platforms
 
 * [x] **x64**
-* [ ] **Jetson Orin Nano**
 * [x] **Jetson Orin NX**
 * [ ] **Jetson AGX Orin**
-* [ ] **Horizon RDK X5**
-* [ ] **Rockchip RK3588**
 
 ## Public APIs
 
@@ -62,20 +59,27 @@ Ensure the following software and hardware are installed:
 
 Follow these steps to set up the project for development and testing on your local machine:
 
-1. Create a workspace `catkin_ws` and navigate to the `src` directory:
+1. Install necessary dependencies:
+
+   ```shell
+   pip3 install 'hex-util-msg>=0.1.0a0'
+   pip3 install 'hex-util-ros>=0.0.1a0'
+   ```
+
+2. Create a workspace `catkin_ws` and navigate to the `src` directory:
 
    ```shell
    mkdir -p catkin_ws/src
    cd catkin_ws/src
    ```
 
-2. Clone the repository:
+3. Clone the repository:
 
    ```shell
    git clone https://github.com/hexfellow/hex_ros_ik_saber_750d.git
    ```
 
-3. Navigate back to the `catkin_ws` directory and build the workspace:
+4. Navigate back to the `catkin_ws` directory and build the workspace:
 
    For ROS 1:
 
@@ -91,7 +95,7 @@ Follow these steps to set up the project for development and testing on your loc
    colcon build
    ```
 
-4. Source the `setup.bash` file:
+5. Source the `setup.bash` file:
 
    For ROS 1:
 
