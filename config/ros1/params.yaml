@@ -12,6 +12,7 @@ model_joint_names:
   - "joint_5"
   - "joint_6"
 model_end_effector: link_6
+model_end_quat: [1.0, 0.0, 0.0, 0.0]
 
 # limit
 limit_pos:

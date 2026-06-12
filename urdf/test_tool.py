@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 ################################################################
-# Copyright 2025 Dong Zhaorui. All rights reserved.
+# Copyright 2026 Dong Zhaorui. All rights reserved.
 # Author: Dong Zhaorui 847235539@qq.com
-# Date  : 2025-05-27
+# Date  : 2026-06-12
 ################################################################
 
 import numpy as np

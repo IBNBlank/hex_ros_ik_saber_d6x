@@ -35,7 +35,7 @@ setup(
     zip_safe=True,
     maintainer='Dong Zhaorui',
     maintainer_email='dzr159@gmail.com',
-    description='A template for writing python ROS packages',
+    description='Inverse kinematics for Saber 750D robot',
     license='Apache-2.0',
     entry_points={
         'console_scripts': [
